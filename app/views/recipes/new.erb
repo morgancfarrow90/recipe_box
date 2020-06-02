@@ -1,1 +1,21 @@
 <h1>Save a New Recipe</h1>
+
+<form method="POST" action="/recipes">
+
+<label for "name">Recipe Name: </label>
+<input type= "text" name="recipe[name]">
+<br>
+<label for "meal_type">Meal Type: </label>
+<input type= "text" name="recipe[meal_type]">
+<br>
+<label for "main_ingrediant">Main Ingredient: </label>
+<input type= "text" name="recipe[main_ingrediant]">
+<br>
+<label for "instructions">Instructions: </label>
+<textarea name="recipe[instructions]"></textarea>
+<br>
+<label for "notes">Notes: </label>
+<textarea name="recipe[notes]"></textarea>
+<br>
+<input type= "submit" value="Submit">
+  </form>
