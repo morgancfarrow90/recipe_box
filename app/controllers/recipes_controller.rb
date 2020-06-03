@@ -18,7 +18,8 @@ class RecipesController < ApplicationController
   #create
    post '/recipes' do
     recipe = Recipe.create(params[:recipe])
-    recipe.user = @current_user
+    recipe.user= current_user
+    binding.pry
     redirect to "/recipes/#{recipe.id}"
    end
 
@@ -57,5 +58,3 @@ class RecipesController < ApplicationController
     erb :'recipes/show'
   end
 end
-
-#edit

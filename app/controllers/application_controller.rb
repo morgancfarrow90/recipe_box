@@ -32,7 +32,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    "Hello World"
+    erb :'sessions/test'
     end
 
 end

@@ -1,20 +1,36 @@
 <!DOCTYPE html>
-<h1>Sign Up</h1>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Recipe Box Sign Up</title>
+      <!-- Link to style sheet -->
+  </head>
+  <body>
+    <header>
+      <!--photo? -->
+      <h1>Recipe Box</h1>
 
-<%= "Must include email and password" if @user && @user.errors.any? %>
+      <nav>
+        <a href="/sessions/login.erb">Log In</a>
+      </nav>
+      </header>
+      <br>
 
-<form action="/users" method="POST">
-<p>
+      <h2>Sign Up</h2>
 
-  <label for="user_email">Email:</label>
-  <input type="text" name="user_email" id="user_email" />
+      <%= "Must include email and password" if @user && @user.errors.any? %>
 
-  <label for="password">Password:</label>
-  <input type="password" name="password" id="password" />
+      <secion id="sign up form">
+      <form action="/users" method="POST">
 
-  <input type="submit" />
+        <label for="user_email">Email:</label>
+        <input type="text" name="user_email" id="user_email" />
 
-</p>
-</form>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" />
 
-</html>
+        <input type="submit" value="Sign Up"/>
+      </form>
+      </section>
+
+    </html>

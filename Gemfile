@@ -21,7 +21,7 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 
 gem 'sinatra'
 gem 'sqlite3'
-gem 'pry-nav'
+gem 'pry'
 gem 'rake'
 gem 'rspec'
 gem 'rack-test'
