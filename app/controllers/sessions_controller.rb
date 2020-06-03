@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
   end
 
   post '/sessions' do
-
     login(params[:user_email], params[:password])
     redirect '/recipes'
   end

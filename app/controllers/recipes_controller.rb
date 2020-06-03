@@ -18,6 +18,7 @@ class RecipesController < ApplicationController
   #create
    post '/recipes' do
     recipe = Recipe.create(params[:recipe])
+    recipe.user = @current_user
     redirect to "/recipes/#{recipe.id}"
    end
 
@@ -27,8 +28,8 @@ class RecipesController < ApplicationController
       redirect '/login'
     else
       id = params[:id]
-      @recipe = current_user.recipes.find_by(id: id)
-      #@recipe = current_user.recipes.find_by(params[:id])
+      @recipe = Recipe.find_by(id: id)
+    #  @recipe = current_user.recipes.find_by(params[:id])
       erb :'recipes/edit'
     end
   end
@@ -38,6 +39,14 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find_by(id: params[:id])
     @recipe.update(params[:recipe])
     redirect to "/recipes/#{recipe.id}"
+  end
+
+  #Destroy
+  delete '/recipes/:id' do
+    id = params[:id]
+    @recipe = Recipe.find_by(id: id)
+    @recipe.delete
+    redirect to "/recipes"
   end
 
 
