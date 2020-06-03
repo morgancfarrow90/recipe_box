@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   get '/login' do
+    @error_message = params[:error]
     erb :'sessions/login'
   end
 

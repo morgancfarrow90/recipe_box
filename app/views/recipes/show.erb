@@ -1,37 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Recipe Box Show Page</title>
-      <!-- Link to style sheet -->
-  </head>
-  <body>
-    <header>
-      <!--photo? -->
-      <h1>Recipe Box</h1>
-
-      <nav>
-        <a href= "/recipes">All Recipes</a> <a href="/recipes/new">New Recipe</a> <a href="/logout">Log Out</a>
-      </nav>
-      </header>
-      <br>
-
-      <section id= "Recipe Details">
-      <h2><%=@recipe.name%></h2>
+  <h2><%=@recipe.name%></h2>
       <h3>Meal Type: <%=@recipe.meal_type%> | Main Ingredient: <%=@recipe.main_ingrediant%></h3>
       <p>Instructions:<%=@recipe.instructions%></p>
       <p>Notes:<%=@recipe.notes%></p>
-      </section>
+
 
       <a href= "/recipes/<%=@recipe.id%>/edit">Edit Recipe</a>
       <br>
       <br>
+      <% if flash.has?(:no_access) %>
+        <%= flash[:no_access] %>
+      <% end %>
 
       <section id= "delete recipe">
         <form method="POST" action="/recipes/<%= @recipe.id %>">
           <input id="hidden" type="hidden" name="_method" value="delete">
           <input type="submit" value="delete">
         </form>
-
-    </body>
-  </html>

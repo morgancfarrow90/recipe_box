@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Recipe Box Edit Recipe</title>
-      <!-- Link to style sheet -->
-  </head>
-  <body>
-    <header>
-      <!--photo? -->
-      <h1>Recipe Box</h1>
-
-      <nav>
-        <a href= "/recipes">All Recipes</a> <a href="/recipes/new">New Recipe</a> <a href="/logout">Log Out</a>
-      </nav>
-      </header>
-      <br>
 
       <h2>Edit a Recipe</h2>
-
-      <section id= "edit recipe form">
 
       <form action= "/recipes/<%=@recipe.id%>" method= "post">
       <input id="hidden" type="hidden" name="_method" value="PUT">
@@ -40,5 +21,3 @@
       <br>
       <input type= "submit" value="Update">
       </form>
-    </body>
-  </html>

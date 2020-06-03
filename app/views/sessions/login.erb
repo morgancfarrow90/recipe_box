@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-
-    <link rel="stylesheet" type= "text/css" href="stylesheets/main.css" />
-    <title>Recipe Box Log In</title>
-  </head>
-  <body>
-    <header>
-      <!--photo? -->
-      <h1>Recipe Box</h1>
-
-      <nav>
-        <a href="recipes/index.erb">View All Recipes</a>
-      </nav>
-      </header>
-      <br>
-
-      <h2>Log In</h2>
+<h2>Log In</h2>
 
         <form action="/sessions" method="POST">
 
@@ -29,8 +10,10 @@
 
             <input type="submit" value="Sign In"/>
         </form>
+
+        <% if flash.has?(:invalid_log_in) %>
+          <%= flash[:invalid_log_in] %>
+        <% end %>
+        
         <br>
         <a href= "/signup">Not Registered? Sign Up</a>
-
-      </body>
-      </html>

@@ -1,9 +1,12 @@
-class ApplicationController < Sinatra::Base
+require 'sinatra/base'
+require 'rack-flash'
 
+class ApplicationController < Sinatra::Base
+  enable :sessions
+  use Rack::Flash
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-    enable :sessions
     set :session_secret, "recipes"
     end
 
@@ -22,7 +25,8 @@ class ApplicationController < Sinatra::Base
       if user && user.authenticate(params[:password])
       session[:user_email] = user.user_email
       else
-      redirect '/login'
+        flash[:invalid_log_in]= "You must log in to access Recipe Box. Please enter valid username and password or sign up"
+        redirect "/login"
       end
     end
 
@@ -32,7 +36,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :'sessions/test'
+    erb :welcome
     end
 
 end

@@ -19,26 +19,29 @@ class RecipesController < ApplicationController
    post '/recipes' do
     recipe = Recipe.create(params[:recipe])
     recipe.user= current_user
-    binding.pry
+    recipe.save
     redirect to "/recipes/#{recipe.id}"
    end
 
   #edit
   get '/recipes/:id/edit' do
-    if !logged_in?
-      redirect '/login'
+    id = params[:id]
+    @recipe = Recipe.find_by(id: id)
+    current_user
+    if !logged_in? || @recipe.user_id != @current_user.id
+      flash[:no_access]= "Too many cooks in the kitchen! You can only make changes to your recipes!"
+      redirect "/recipes"
     else
-      id = params[:id]
-      @recipe = Recipe.find_by(id: id)
+
     #  @recipe = current_user.recipes.find_by(params[:id])
       erb :'recipes/edit'
     end
   end
 
   #Update
-  put '/articles/:id' do
-    @recipe = Recipe.find_by(id: params[:id])
-    @recipe.update(params[:recipe])
+  put '/recipes/:id' do
+    recipe = Recipe.find_by(id: params[:id])
+    recipe.update(params[:recipe])
     redirect to "/recipes/#{recipe.id}"
   end
 
@@ -46,10 +49,15 @@ class RecipesController < ApplicationController
   delete '/recipes/:id' do
     id = params[:id]
     @recipe = Recipe.find_by(id: id)
-    @recipe.delete
-    redirect to "/recipes"
+    current_user
+    if !logged_in? || @recipe.user_id != @current_user.id
+      flash[:no_access]= "Too many cooks in the kitchen! You can only make changes to your recipes!"
+      redirect "/recipes"
+    else
+      @recipe.delete
+      redirect to "/recipes"
   end
-
+end
 
   #show
   get '/recipes/:id' do

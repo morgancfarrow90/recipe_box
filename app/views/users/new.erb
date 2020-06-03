@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Recipe Box Sign Up</title>
-      <!-- Link to style sheet -->
-  </head>
-  <body>
-    <header>
-      <!--photo? -->
-      <h1>Recipe Box</h1>
-
-      <nav>
-        <a href="/sessions/login.erb">Log In</a>
-      </nav>
-      </header>
-      <br>
-
-      <h2>Sign Up</h2>
+  <h2>Sign Up</h2>
 
       <%= "Must include email and password" if @user && @user.errors.any? %>
 
-      <secion id="sign up form">
+
       <form action="/users" method="POST">
 
         <label for="user_email">Email:</label>
@@ -31,6 +13,7 @@
 
         <input type="submit" value="Sign Up"/>
       </form>
-      </section>
-
-    </html>
+      <br>
+      <% if flash.has?(:invalid_sign_up) %>
+        <%= flash[:invalid_sign_up] %>
+      <% end %>
