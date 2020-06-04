@@ -1,4 +1,4 @@
-  <h2><%=@recipe.name%></h2>
+<h2><%=@recipe.name%></h2>
       <h3>Meal Type: <%=@recipe.meal_type%> | Main Ingredient: <%=@recipe.main_ingrediant%></h3>
       <p>Instructions:<%=@recipe.instructions%></p>
       <p>Notes:<%=@recipe.notes%></p>
@@ -7,11 +7,7 @@
       <a href= "/recipes/<%=@recipe.id%>/edit">Edit Recipe</a>
       <br>
       <br>
-      <% if flash.has?(:no_access) %>
-        <%= flash[:no_access] %>
-      <% end %>
 
-      <section id= "delete recipe">
         <form method="POST" action="/recipes/<%= @recipe.id %>">
           <input id="hidden" type="hidden" name="_method" value="delete">
           <input type="submit" value="delete">

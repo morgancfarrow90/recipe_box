@@ -1,3 +1,4 @@
+
 <h2>Log In</h2>
 
         <form action="/sessions" method="POST">
@@ -14,6 +15,6 @@
         <% if flash.has?(:invalid_log_in) %>
           <%= flash[:invalid_log_in] %>
         <% end %>
-        
+
         <br>
         <a href= "/signup">Not Registered? Sign Up</a>

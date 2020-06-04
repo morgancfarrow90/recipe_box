@@ -1,4 +1,8 @@
-  <h2>Add a New Recipe</h2>
+<h2>Add a New Recipe</h2>
+
+<% if flash.has?(:required_fields) %>
+  <%= flash[:required_fields] %>
+<% end %>
 
       <form method="POST" action="/recipes">
 

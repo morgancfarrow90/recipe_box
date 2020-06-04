@@ -19,8 +19,13 @@ class RecipesController < ApplicationController
    post '/recipes' do
     recipe = Recipe.create(params[:recipe])
     recipe.user= current_user
+    if !params["recipe"]["name"].empty? && !params["recipe"]["meal_type"].empty? && !params["recipe"]["main_ingrediant"].empty? && !params["recipe"]["instructions"].empty?
     recipe.save
     redirect to "/recipes/#{recipe.id}"
+    else
+      flash[:required_fields]= "All fields must be completed. Only notes are optional."
+      erb :'recipes/new'
+    end
    end
 
   #edit
