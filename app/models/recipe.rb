@@ -1,4 +1,4 @@
 class Recipe < ActiveRecord::Base
   belongs_to :user
-  belongs_to :meal_types
+  belongs_to :genre
 end

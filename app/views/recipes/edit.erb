@@ -6,9 +6,20 @@
       <label for "name">Recipe Name: </label>
       <input type= "text" name="recipe[name]" value=<%= @recipe.name %>>
       <br>
-      <label for "meal_type">Meal Type: </label>
-      <input type= "text" name="recipe[meal_type]" value=<%= @recipe.meal_type %>>
+
+
+      <label> Meal Type: </label>
+      <% Genre.all.each do |type| %>
+      <input type="radio" name="recipe[genre_id]"
+      value="<%=type.id%>" <%='checked' if @recipe.genre == type %>>
+
+      <%=type.genre_name%></input>
+      <% end %>
       <br>
+
+
+
+
       <label for "main_ingrediant">Main Ingredient: </label>
       <input type= "text" name="recipe[main_ingrediant]" value=<%= @recipe.main_ingrediant %>>
       <br>

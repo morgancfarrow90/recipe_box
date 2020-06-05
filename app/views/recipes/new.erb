@@ -12,9 +12,9 @@
 
 
 <label> Meal Type: </label>
-<% MealType.all.each do |type| %>
-<input id="<%= type.meal_type_name %>" type="checkbox" name="recipe[meal_type]"
-value="<%=type.meal_type_name%>"><%=type.meal_type_name%>
+<% Genre.all.each do |type| %>
+<input type="radio" name="recipe[genre_id]"
+value="<%=type.id%>"><%=type.genre_name%></input>
 <% end %><br>
 
 <label for "main_ingrediant">Main Ingredient: </label>

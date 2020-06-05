@@ -37,6 +37,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     @recipes = Recipe.all
+    @genres = Genre.all
     erb :welcome
     end
 

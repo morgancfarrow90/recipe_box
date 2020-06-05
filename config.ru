@@ -14,7 +14,7 @@ begin
   fi_check_migration
 
   use Rack::MethodOverride
-  use MealTypesController
+  use GenresController
   use SessionsController
   use RecipesController
   use UsersController

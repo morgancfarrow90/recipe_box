@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
   #index
   get '/recipes' do
     @recipes = Recipe.all
+    @genres = Genre.all
     erb :'recipes/index'
   end
 
@@ -19,6 +20,7 @@ class RecipesController < ApplicationController
    post '/recipes' do
     recipe = Recipe.create(params[:recipe])
     recipe.user= current_user
+
     if !params["recipe"]["name"].empty? && !params["recipe"]["main_ingrediant"].empty? && !params["recipe"]["instructions"].empty?
     recipe.save
     redirect to "/recipes/#{recipe.id}"
