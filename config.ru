@@ -2,6 +2,9 @@ require_relative './config/environment'
 
 require './config/environment'
 
+use Rack::Static, urls: ['/css'], root: 'public'
+
+
 ##if ActiveRecord::Migrator.needs_migration?
 ##  raise 'Migrations are pending. Run `rake db:migrate` to'
 ##end
@@ -11,6 +14,7 @@ begin
   fi_check_migration
 
   use Rack::MethodOverride
+  use MealTypesController
   use SessionsController
   use RecipesController
   use UsersController

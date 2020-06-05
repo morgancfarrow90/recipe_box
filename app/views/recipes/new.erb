@@ -4,22 +4,27 @@
   <%= flash[:required_fields] %>
 <% end %>
 
-      <form method="POST" action="/recipes">
+<form method="POST" action="/recipes">
 
-        <label for "name">Recipe Name: </label>
-        <input type= "text" name="recipe[name]">
-        <br>
-        <label for "meal_type">Meal Type: </label>
-        <input type= "text" name="recipe[meal_type]">
-        <br>
-        <label for "main_ingrediant">Main Ingredient: </label>
-        <input type= "text" name="recipe[main_ingrediant]">
-        <br>
-        <label for "instructions">Instructions: </label>
-        <textarea name="recipe[instructions]"></textarea>
-        <br>
-        <label for "notes">Notes: </label>
-        <textarea name="recipe[notes]"></textarea>
-        <br>
-        <input type= "submit" value="Submit">
-      </form>
+<label for "name">Recipe Name: </label>
+<input type= "text" name="recipe[name]">
+<br>
+
+
+<label> Meal Type: </label>
+<% MealType.all.each do |type| %>
+<input id="<%= type.meal_type_name %>" type="checkbox" name="recipe[meal_type]"
+value="<%=type.meal_type_name%>"><%=type.meal_type_name%>
+<% end %><br>
+
+<label for "main_ingrediant">Main Ingredient: </label>
+<input type= "text" name="recipe[main_ingrediant]">
+<br>
+<label for "instructions">Instructions: </label>
+<textarea name="recipe[instructions]"></textarea>
+<br>
+<label for "notes">Notes: </label>
+<textarea name="recipe[notes]"></textarea>
+<br>
+<input type= "submit" value="Submit">
+</form>
